@@ -25,7 +25,7 @@ export default function HomePage() {
         <ExperienceCard
           index="01"
           icon={FileText}
-          meta={`${client.proposal.price} · ${client.proposal.delivery}`}
+          meta="Project scope & commercial terms"
           title={client.proposal.title}
           description={client.proposal.description}
           to="/view/proposal"
