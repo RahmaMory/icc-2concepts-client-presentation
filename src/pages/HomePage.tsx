@@ -9,7 +9,7 @@ export default function HomePage() {
       <section className="hero-section">
         <div className="hero-copy">
           <div className="eyebrow"><span />{client.eyebrow}</div>
-          <p className="client-label">Prepared for {client.clientName}</p>
+          {/* <p className="client-label">Prepared for {client.clientName}</p> */}
           <h1>{client.headline}</h1>
           <p className="hero-intro">{client.intro}</p>
         </div>
