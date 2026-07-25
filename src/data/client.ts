@@ -5,7 +5,7 @@ import type { ClientConfig } from "../types";
 // Replace the client information, prices, images, and ready-made links.
 // ============================================================
 export const client: ClientConfig = {
-  clientName: "CCCCCCCC",
+clientName: "Taiba Syrian Restaurant",
   industry: "Food & Restaurants",
 eyebrow: "ICC • DIGITAL SOLUTIONS & SOFTWARE DEVELOPMENT",
 
@@ -33,8 +33,8 @@ url: "https://gamma.app/embed/Tiba-Syrian-Restaurant-bk9r0fpqvypmah8",
     description:
       "Open the ready-made website concept prepared for this client and explore it interactively.",
     // Paste the Vercel link sent by the website designer.
-    url: "https://example.vercel.app/",
-    image: "/assets/projects/client-demo.png",
+    url: "https://taiba-azure-five.vercel.app/",
+    image: "/assets/projects/taiba.png",
   },
 
   related: [
@@ -74,6 +74,6 @@ url: "/sabry-afandi/index.html",
     instagram: "https://www.instagram.com/io_code_company/",
     facebook: "https://www.facebook.com/profile.php?id=61587705431716",
     linkedin: "https://www.linkedin.com/company/io-code-collaboration-icc/about/",
-    whatsapp: "https://wa.me/201031158933",
-  },
+whatsapp: "https://wa.me/201031158933", 
+ },
 };
