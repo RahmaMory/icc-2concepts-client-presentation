@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صبري أفندي – الطعم أصله بلدي</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown:    #8B5E1A;
+  --gold:     #C89A3A;
+  --gold-lt:  #E8C060;
+  --cream:    #F5EDD8;
+  --parchment:#FDF6E3;
+  --dark:     #1A1208;
+  --mid:      #2E1F08;
+  --shadow:   rgba(139,94,26,.45);
+  --white:    #FFFFFF;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Cairo',sans-serif;background:var(--parchment);color:var(--dark);overflow-x:hidden}
+
+/* ── PARTICLES ── */
+#sparks{position:fixed;inset:0;pointer-events:none;z-index:0}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;z-index:999;
+  background:rgba(10,7,2,.9);backdrop-filter:blur(14px);
+  padding:12px 36px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(200,154,58,.25);
+}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo-img{width:52px;height:52px;border-radius:8px;object-fit:cover;border:1px solid rgba(200,154,58,.4)}
+.nav-logo-text{font-family:'Amiri',serif;font-size:1.5rem;color:var(--gold);text-shadow:0 0 16px rgba(200,154,58,.5)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.88rem;font-weight:600;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--brown);color:#fff;padding:9px 22px;border-radius:24px;font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s;box-shadow:0 0 16px var(--shadow)}
+.nav-cta:hover{background:var(--gold);color:var(--dark)}
+
+/* ── HERO ── */
+#hero{
+  position:relative;height:100vh;min-height:640px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(160deg,#100900 0%,#2a1500 45%,#0e0600 100%);
+}
+.hero-food-img{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1800&q=85') center/cover;
+  opacity:.22;animation:zoomBg 14s ease-in-out infinite alternate;
+}
+@keyframes zoomBg{0%{transform:scale(1)}100%{transform:scale(1.1)}}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 65% 55%,rgba(139,94,26,.5) 0%,transparent 65%),
+             radial-gradient(ellipse at 20% 30%,rgba(200,154,58,.1) 0%,transparent 50%);
+}
+.hero-content{position:relative;z-index:2;text-align:center;padding:0 20px}
+.hero-badge{
+  display:inline-block;border:1px solid var(--gold);color:var(--gold);
+  font-size:.75rem;letter-spacing:3px;padding:6px 20px;border-radius:20px;margin-bottom:20px;
+  opacity:0;animation:fadeDown .8s ease .2s forwards;
+}
+.hero-logo-big{
+  width:160px;height:160px;border-radius:16px;object-fit:cover;
+  border:2px solid rgba(200,154,58,.5);
+  box-shadow:0 0 50px rgba(200,154,58,.35);
+  margin:0 auto 22px;display:block;
+  opacity:0;animation:fadeDown .8s ease .35s forwards;
+}
+.hero-tagline{
+  font-family:'Amiri',serif;font-size:clamp(2.2rem,5vw,3.6rem);
+  color:var(--white);line-height:1.4;
+  text-shadow:0 4px 30px rgba(0,0,0,.8);
+  opacity:0;animation:fadeDown .8s ease .5s forwards;
+}
+.hero-tagline span{color:var(--gold)}
+.gold-line{width:80px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto;opacity:0;animation:fadeDown .8s ease .6s forwards}
+.hero-sub{color:rgba(255,255,255,.7);font-size:1rem;margin-top:8px;opacity:0;animation:fadeDown .8s ease .7s forwards}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;opacity:0;animation:fadeUp .8s ease .9s forwards}
+.btn-gold{background:var(--gold);color:var(--dark);padding:14px 36px;border-radius:30px;font-size:.98rem;font-weight:900;text-decoration:none;border:none;cursor:pointer;transition:all .3s;box-shadow:0 0 28px rgba(200,154,58,.5)}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-3px);box-shadow:0 8px 36px rgba(200,154,58,.7)}
+.btn-outline{background:transparent;color:#fff;padding:14px 36px;border-radius:30px;font-size:.98rem;font-weight:700;text-decoration:none;border:2px solid rgba(255,255,255,.45);transition:all .3s;cursor:pointer}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px)}
+.hero-stats{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;gap:48px;opacity:0;animation:fadeUp .8s ease 1.1s forwards}
+.stat{text-align:center}
+.stat-num{font-size:1.8rem;font-weight:900;color:var(--gold)}
+.stat-lbl{font-size:.72rem;color:rgba(255,255,255,.5)}
+.scroll-arrow{position:absolute;bottom:22px;right:26px;color:var(--gold);font-size:1.3rem;animation:bounce 1.8s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+@keyframes fadeDown{0%{opacity:0;transform:translateY(-20px)}100%{opacity:1;transform:none}}
+@keyframes fadeUp  {0%{opacity:0;transform:translateY(20px)} 100%{opacity:1;transform:none}}
+
+/* ── SECTION HEADER ── */
+.sec-head{text-align:center;margin-bottom:10px}
+.sec-head h2{font-family:'Amiri',serif;font-size:clamp(1.8rem,4vw,2.7rem);color:var(--brown)}
+.sec-head p{color:#888;font-size:.9rem;margin-top:6px}
+.shimmer{width:90px;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto 36px;position:relative;overflow:hidden}
+.shimmer::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,#fff9,transparent);animation:shim 2.4s ease-in-out infinite}
+@keyframes shim{100%{left:200%}}
+
+/* ── MENU ── */
+#menu{background:var(--parchment);padding:90px 20px}
+.menu-tabs{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:38px}
+.tab-btn{padding:9px 20px;border-radius:22px;border:2px solid var(--brown);background:transparent;color:var(--brown);font-family:'Cairo',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .3s}
+.tab-btn.active,.tab-btn:hover{background:var(--brown);color:#fff;box-shadow:0 5px 18px var(--shadow)}
+.menu-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;max-width:1200px;margin:0 auto;animation:fadeUp .5s ease forwards}
+.menu-grid.active{display:grid}
+
+/* card */
+.fcard{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 5px 24px rgba(0,0,0,.07);transition:all .35s cubic-bezier(.25,.8,.25,1);cursor:pointer;border:1px solid rgba(200,154,58,.12)}
+.fcard:hover{transform:translateY(-8px);box-shadow:0 16px 44px var(--shadow)}
+.fcard-img{width:100%;height:185px;object-fit:cover;display:block;transition:transform .5s ease}
+.fcard:hover .fcard-img{transform:scale(1.07)}
+.fcard-body{padding:16px 18px}
+.fcard-name{font-weight:700;font-size:1rem;color:var(--dark)}
+.fcard-desc{font-size:.8rem;color:#999;margin-top:4px;line-height:1.5}
+.fcard-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.fcard-price{font-size:1.1rem;font-weight:900;color:var(--brown)}
+.add-btn{background:var(--brown);color:#fff;border:none;border-radius:18px;padding:7px 16px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .3s;font-family:'Cairo',sans-serif}
+.add-btn:hover{background:var(--gold);color:var(--dark);transform:scale(1.07)}
+
+/* price list style card (for many items) */
+.list-card{background:#fff;border-radius:16px;padding:22px 24px;box-shadow:0 5px 24px rgba(0,0,0,.07);border:1px solid rgba(200,154,58,.15)}
+.list-card h3{font-family:'Amiri',serif;font-size:1.25rem;color:var(--brown);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:14px}
+.list-item{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dashed rgba(200,154,58,.25);font-size:.88rem}
+.list-item:last-child{border-bottom:none}
+.list-item-name{color:var(--dark);font-weight:600}
+.list-item-sub{font-size:.73rem;color:#aaa;margin-top:2px}
+.list-prices{display:flex;gap:10px;font-weight:900;color:var(--brown);font-size:.88rem;flex-shrink:0}
+.list-prices span{font-size:.65rem;color:#aaa;font-weight:400}
+
+/* ── STORY BAND ── */
+#story{
+  background:linear-gradient(135deg,#1a0e00 0%,#2e1a05 50%,#120b00 100%);
+  padding:90px 20px;text-align:center;position:relative;overflow:hidden;
+}
+#story::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23C89A3A' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+#story h2{font-family:'Amiri',serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--gold);position:relative;z-index:1;text-shadow:0 0 40px rgba(200,154,58,.4)}
+#story p{color:rgba(255,255,255,.7);max-width:640px;margin:14px auto 0;font-size:1rem;line-height:1.8;position:relative;z-index:1}
+
+/* ── FEATURES ── */
+#features{padding:80px 20px;background:#fff}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;max-width:1100px;margin:0 auto}
+.feat-card{text-align:center;padding:34px 22px;border-radius:16px;border:1px solid rgba(139,94,26,.1);background:var(--parchment);transition:all .3s}
+.feat-card:hover{border-color:var(--brown);box-shadow:0 10px 36px var(--shadow);transform:translateY(-6px)}
+.feat-icon{font-size:2.6rem;margin-bottom:14px}
+.feat-card h3{font-size:1rem;font-weight:700;color:var(--brown);margin-bottom:8px}
+.feat-card p{font-size:.82rem;color:#888;line-height:1.6}
+
+/* ── ORDER ── */
+#order{padding:90px 20px;background:var(--parchment)}
+.order-wrap{max-width:680px;margin:0 auto;background:#fff;border-radius:22px;box-shadow:0 18px 56px rgba(139,94,26,.13);padding:46px 38px;border-top:4px solid var(--gold)}
+.order-wrap h3{font-family:'Amiri',serif;font-size:1.8rem;color:var(--brown);text-align:center;margin-bottom:28px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fg{margin-bottom:18px}
+.fg label{display:block;font-weight:700;font-size:.85rem;color:#666;margin-bottom:6px}
+.fg input,.fg select,.fg textarea{width:100%;padding:11px 15px;border:2px solid #e8e0d0;border-radius:10px;font-family:'Cairo',sans-serif;font-size:.93rem;transition:border .3s;background:var(--parchment)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--brown);box-shadow:0 0 0 4px rgba(139,94,26,.08)}
+.fg textarea{height:88px;resize:none}
+.order-btns{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.btn-wa{flex:1;padding:13px;border-radius:12px;background:#25D366;color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.93rem;border:none;cursor:pointer;box-shadow:0 5px 18px rgba(37,211,102,.35);transition:all .3s}
+.btn-wa:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(37,211,102,.5)}
+.btn-call{flex:1;padding:13px;border-radius:12px;background:var(--brown);color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.93rem;border:none;cursor:pointer;animation:pulse 2s ease-in-out infinite;transition:all .3s}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--shadow)}50%{box-shadow:0 0 0 12px rgba(139,94,26,0)}}
+.btn-call:hover{background:#6a4010;transform:translateY(-3px)}
+
+/* ── INFO STRIP ── */
+#info{background:var(--brown);padding:50px 20px;display:flex;justify-content:center;gap:56px;flex-wrap:wrap}
+.info-i{text-align:center;color:#fff}
+.info-i .ic{font-size:2rem;margin-bottom:8px}
+.info-i h4{font-weight:700;font-size:.98rem}
+.info-i p{font-size:.8rem;opacity:.75;margin-top:4px;line-height:1.5}
+
+/* ── FOOTER ── */
+footer{background:#100900;padding:60px 20px 28px;text-align:center}
+.footer-logo-img{width:90px;height:90px;border-radius:12px;object-fit:cover;border:2px solid rgba(200,154,58,.4);margin:0 auto 14px;display:block}
+.footer-name{font-family:'Amiri',serif;font-size:2rem;color:var(--gold);text-shadow:0 0 28px rgba(200,154,58,.4)}
+.footer-tag{color:rgba(255,255,255,.45);font-size:.85rem;margin-top:4px}
+.footer-socials{display:flex;justify-content:center;gap:14px;margin:26px 0}
+.soc{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(200,154,58,.25);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.65);font-size:1rem;text-decoration:none;transition:all .3s}
+.soc:hover{background:var(--gold);color:var(--dark);border-color:var(--gold)}
+.footer-div{height:1px;background:rgba(255,255,255,.06);margin:22px 0}
+.footer-bot{color:rgba(255,255,255,.3);font-size:.78rem}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  nav{padding:10px 14px}
+  .nav-links{display:none}
+  .form-row{grid-template-columns:1fr}
+  .order-wrap{padding:28px 18px}
+  .hero-stats{gap:24px}
+  #info{gap:26px}
+}
+</style>
+</head>
+<body>
+
+<canvas id="sparks"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img class="nav-logo-img" src="sabry-afandi.jpeg" alt="لوجو صبري أفندي">
+    <div class="nav-logo-text">صبري أفندي</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#menu">المنيو</a></li>
+    <li><a href="#story">قصتنا</a></li>
+    <li><a href="#order">اطلب الآن</a></li>
+  </ul>
+  <a href="tel:01550887929" class="nav-cta">📞 اتصل بنا</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-food-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ المنصورة – الطعم الأصيل ✦</div>
+    <img class="hero-logo-big" src="sabry-afandi.jpeg" alt="صبري أفندي">
+    <h1 class="hero-tagline">الطعم <span>أصله بلدي</span></h1>
+    <div class="gold-line"></div>
+    <p class="hero-sub">مشويات وكباب وكفتة وفراخ على الفحم · حمام محشي · طواجن · ومحاشي</p>
+    <div class="hero-btns">
+      <a href="#order" class="btn-gold">🍖 اطلب دلوقتي</a>
+      <a href="#menu" class="btn-outline">📋 شوف المنيو</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">١٠٠٪</div><div class="stat-lbl">فحم طبيعي</div></div>
+    <div class="stat"><div class="stat-num">+٥٠</div><div class="stat-lbl">صنف أصيل</div></div>
+    <div class="stat"><div class="stat-num">٣ ص</div><div class="stat-lbl">حتى الفجر</div></div>
+  </div>
+  <div class="scroll-arrow">↓</div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="sec-head reveal">
+    <h2>🍽 منيو صبري أفندي</h2>
+    <p>منيو كامل بالأسعار – اختار اللي يعجبك</p>
+  </div>
+  <div class="shimmer"></div>
+
+  <div class="menu-tabs reveal">
+    <button class="tab-btn active" onclick="showTab('sandwiches',this)">🥪 سندوتشات</button>
+    <button class="tab-btn" onclick="showTab('grills',this)">🔥 مشويات</button>
+    <button class="tab-btn" onclick="showTab('mixes',this)">🍱 ميكسات</button>
+    <button class="tab-btn" onclick="showTab('chicken',this)">🍗 أطباق فراخ</button>
+    <button class="tab-btn" onclick="showTab('main',this)">🥘 أطباق رئيسية</button>
+    <button class="tab-btn" onclick="showTab('tajeen',this)">🫕 طواجن وورق عنب</button>
+    <button class="tab-btn" onclick="showTab('sides',this)">🥗 سلطات ومقبلات</button>
+    <button class="tab-btn" onclick="showTab('rice',this)">🍚 أرز ومكرونات</button>
+    <button class="tab-btn" onclick="showTab('drinks',this)">🥤 مشروبات وحلو</button>
+  </div>
+
+  <!-- SANDWICHES -->
+  <div class="menu-grid active" id="tab-sandwiches">
+    <div class="list-card">
+      <h3>🥪 السندوتشات</h3>
+      <div class="list-item"><div><div class="list-item-name">كفتة</div></div><div class="list-prices">٤٠<span>وسط</span> / ٧٥<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كباب</div></div><div class="list-prices">٥٥<span>وسط</span> / ٨٠<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كفتة وكباب</div></div><div class="list-prices">٥٠<span>وسط</span> / ٧٥<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كبدة إسكندراني</div></div><div class="list-prices">٤٥<span>وسط</span> / ٨٠<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كبدة على الفحم</div></div><div class="list-prices">٤٥<span>وسط</span> / ٨٠<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">شيش طاووق</div></div><div class="list-prices">٤٠<span>وسط</span> / ٧٠<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">سجق إسكندراني</div></div><div class="list-prices">٤٠<span>وسط</span> / ٧٥<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">حواوشي / حواوشي بالجبنة</div></div><div class="list-prices">٥٥<span>وسط</span> / ٦٠<span>كبير</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">برجر</div></div><div class="list-prices">٧٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">شاورما مصري 🆕</div></div><div class="list-prices">٤٠</div></div>
+    </div>
+    <div class="fcard">
+      <img class="fcard-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80" alt="مشويات">
+      <div class="fcard-body">
+        <div class="fcard-name">كفتة وكباب طازج على الفحم</div>
+        <div class="fcard-desc">اللحم البلدي الطازج مشوي على الفحم الطبيعي – نكهة لا بديل عنها</div>
+        <div class="fcard-foot"><span class="fcard-price">من ٤٠ جنيه</span><button class="add-btn">أضف للطلب</button></div>
+      </div>
+    </div>
+    <div class="fcard">
+      <img class="fcard-img" src="https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=600&q=80" alt="حواوشي">
+      <div class="fcard-body">
+        <div class="fcard-name">حواوشي أفندي</div>
+        <div class="fcard-desc">خبز محشي باللحم البلدي الطازج بالبهارات الأصيلة</div>
+        <div class="fcard-foot"><span class="fcard-price">٥٥ / ٦٠ جنيه</span><button class="add-btn">أضف للطلب</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRILLS -->
+  <div class="menu-grid" id="tab-grills">
+    <div class="list-card" style="grid-column:span 2">
+      <h3>🔥 المشويات (ربع / تلت / نص)</h3>
+      <div class="list-item"><div><div class="list-item-name">كفتة</div></div><div class="list-prices">١٨٠<span>ربع</span> / ٢٤٠<span>تلت</span> / ٣٦٠<span>نص</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كباب</div></div><div class="list-prices">٢٠٠<span>ربع</span> / ٢٦٧<span>تلت</span> / ٤٠٠<span>نص</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كباب وكفتة</div></div><div class="list-prices">١٩٠<span>ربع</span> / ٢٥٤<span>تلت</span> / ٣٨٠<span>نص</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">طرب</div></div><div class="list-prices">١٨٥<span>ربع</span> / ٢٤٧<span>تلت</span> / ٣٧٠<span>نص</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">ريش (بتلو أو ضاني)</div></div><div class="list-prices">٢١٥<span>ربع</span> / ٢٨٧<span>تلت</span> / ٤٣٠<span>نص</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">كبدة وكلاوي وحلويات</div></div><div class="list-prices">٢٠٠<span>ربع</span> / ٢٦٧<span>تلت</span> / ٤٠٠<span>نص</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">شيش طاووق</div></div><div class="list-prices">١١٠<span>ربع</span> / ١٤٧<span>تلت</span> / ٢٢٠<span>نص</span></div></div>
+    </div>
+    <div class="list-card">
+      <h3>💰 وجبات التوفير</h3>
+      <div class="list-item"><div><div class="list-item-name">ربع فرخة مشوية</div><div class="list-item-sub">صدر / ورك</div></div><div class="list-prices">٨٥<span>صدر</span> / ١٠٠<span>ورك</span></div></div>
+      <div class="list-item"><div><div class="list-item-name">٤ قطع شيش طاووق</div></div><div class="list-prices">١٢٠ / ١٢٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">وجبة مكس كفتة وفراخ</div><div class="list-item-sub">ربع فرخة مشوية + ٢ كفتة</div></div><div class="list-prices">١٢٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">وجبة مكس كفتة وشيش</div><div class="list-item-sub">٣ شيش طاووق + ٢ كفتة</div></div><div class="list-prices">١١٥</div></div>
+    </div>
+  </div>
+
+  <!-- MIXES -->
+  <div class="menu-grid" id="tab-mixes">
+    <div class="list-card" style="grid-column:span 2">
+      <h3>🍱 الميكسات</h3>
+      <div class="list-item"><div><div class="list-item-name">ميكس فراخ</div><div class="list-item-sub">أشيش طاووق · ريم فرخة · ورق</div></div><div class="list-prices">٢٤٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس لايت</div><div class="list-item-sub">أشيش طاووق · كفتة · ريم فرخة · ورق</div></div><div class="list-prices">٢٣٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس السبيشال</div><div class="list-item-sub">٤ كباب · ٢ كفتة · ريم فرخة · ورق</div></div><div class="list-prices">٢٤٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس جريل صغير</div><div class="list-item-sub">٢ كباب · ٢ كفتة · ٢ شيش طاووق</div></div><div class="list-prices">٣١٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس جريل كبير</div><div class="list-item-sub">٢ كباب · ٣ كفتة · ٣ شيش طاووق · ريم فرخة</div></div><div class="list-prices">٣٤٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس جريل لحوم</div><div class="list-item-sub">٢ دراع مشكل كباب وكفتة وريش كبيرة</div></div><div class="list-prices">٤٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس جريل حمام ولحوم</div><div class="list-item-sub">٣ كباب · ٢ كفتة · فرد حمام</div></div><div class="list-prices">٣٧٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ميكس صبري أفندي</div><div class="list-item-sub">٤ كباب · ٢ كفتة · نص فرخة · ورق عنب · سمبوسك</div></div><div class="list-prices">٣٣٥</div></div>
+    </div>
+  </div>
+
+  <!-- CHICKEN -->
+  <div class="menu-grid" id="tab-chicken">
+    <div class="fcard">
+      <img class="fcard-img" src="https://images.unsplash.com/photo-1598103442097-8b74394b95c3?w=600&q=80" alt="نص دجاج مشوي">
+      <div class="fcard-body">
+        <div class="fcard-name">نص دجاج مشوي على الفحم</div>
+        <div class="fcard-desc">فراخ طازجة مشوية على الفحم بالتتبيلة الأصيلة</div>
+        <div class="fcard-foot"><span class="fcard-price">١٨٠ جنيه</span><button class="add-btn">أضف للطلب</button></div>
+      </div>
+    </div>
+    <div class="fcard">
+      <img class="fcard-img" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80" alt="شيش طاووق دجاج">
+      <div class="fcard-body">
+        <div class="fcard-name">شيش طاووق دجاج</div>
+        <div class="fcard-desc">قطع فراخ متبلة مشوية على الفحم</div>
+        <div class="fcard-foot"><span class="fcard-price">١٩٠ جنيه</span><button class="add-btn">أضف للطلب</button></div>
+      </div>
+    </div>
+    <div class="list-card">
+      <h3>🍗 باقي أطباق الفراخ</h3>
+      <div class="list-item"><div><div class="list-item-name">بريياني دجاج</div></div><div class="list-prices">١٨٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مندي دجاج</div></div><div class="list-prices">١٨٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">فاهيتا دجاج</div></div><div class="list-prices">١٩٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">مومو تشيكن</div></div><div class="list-prices">١٩٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">نص فرخة متحمرة</div></div><div class="list-prices">١٨٠</div></div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="menu-grid" id="tab-main">
+    <div class="fcard">
+      <img class="fcard-img" src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&q=80" alt="حمام محشي">
+      <div class="fcard-body">
+        <div class="fcard-name">حمام محشي</div>
+        <div class="fcard-desc">حمام طازج محشي بالأرز والكبد والتوابل الشرقية</div>
+        <div class="fcard-foot"><span class="fcard-price">١٥٠ جنيه</span><button class="add-btn">أضف للطلب</button></div>
+      </div>
+    </div>
+    <div class="list-card">
+      <h3>🥘 الأطباق الرئيسية</h3>
+      <div class="list-item"><div><div class="list-item-name">أوزي ضاني مشوي</div></div><div class="list-prices">٣٥٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">موزة ضاني مشوي</div></div><div class="list-prices">٣٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ضلع ضاني مشوي</div></div><div class="list-prices">٣٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">موزة لحم</div></div><div class="list-prices">٣٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">مندي لحم</div></div><div class="list-prices">٣٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">كبسة لحم</div></div><div class="list-prices">١٥٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">نص بطة متحمرة</div></div><div class="list-prices">٣٥٠</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🍳 الجريل</h3>
+      <div class="list-item"><div><div class="list-item-name">طبق كبدة إسكندراني</div></div><div class="list-prices">٢٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">طبق سجق إسكندراني</div></div><div class="list-prices">١٩٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">طبق سجق بدبس رمان</div></div><div class="list-prices">٢٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">طبق ميكس كبدة وسجق</div></div><div class="list-prices">٢٧٠</div></div>
+    </div>
+  </div>
+
+  <!-- TAJEEN -->
+  <div class="menu-grid" id="tab-tajeen">
+    <div class="list-card">
+      <h3>🫕 الطواجن</h3>
+      <div class="list-item"><div><div class="list-item-name">ملوخية بالفراخ</div></div><div class="list-prices">٩٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">فتة بالكوارع</div></div><div class="list-prices">٢٧٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ملوخية بالكوارع</div></div><div class="list-prices">٢٦٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ورقة لحمة</div></div><div class="list-prices">٢٧٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">خضار سوتيه</div></div><div class="list-prices">٥٥</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🌿 الجانبي (طواجن سادة)</h3>
+      <div class="list-item"><div><div class="list-item-name">ملوخية سادة</div></div><div class="list-prices">٥٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">بامية سادة</div></div><div class="list-prices">٥٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">تورلي سادة</div></div><div class="list-prices">٥٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">بطاطس سادة</div></div><div class="list-prices">٥٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">ورق عنب بالعكاوي</div></div><div class="list-prices">١٣٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">ورق عنب بالكوارع</div></div><div class="list-prices">٣٠٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">تورلي بطاطس بامية باللحمة</div></div><div class="list-prices">٢٦٠</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🥒 المقبلات (محاشي وغيره)</h3>
+      <div class="list-item"><div><div class="list-item-name">بطاطس فارم</div></div><div class="list-prices">٣٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">سمبوسك جبنة ٥ قطع</div></div><div class="list-prices">٥٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">سمبوسك باللحمة ٥ قطع</div></div><div class="list-prices">٦٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">محشي ورق عنب صغير</div></div><div class="list-prices">٨٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">محشي ورق عنب كبير</div></div><div class="list-prices">٩٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">محشي مشكل</div></div><div class="list-prices">٩٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">ممبار</div></div><div class="list-prices">٩٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">أصناف شرقية (سمبوسك · ورق · ممبار)</div><div class="list-item-sub">+ بطاطس حواوشي</div></div><div class="list-prices">١٣٥</div></div>
+    </div>
+  </div>
+
+  <!-- SIDES -->
+  <div class="menu-grid" id="tab-sides">
+    <div class="list-card">
+      <h3>🥗 السلطات</h3>
+      <div class="list-item"><div><div class="list-item-name">طحينة</div></div><div class="list-prices">٢٢</div></div>
+      <div class="list-item"><div><div class="list-item-name">بابا غنوج</div></div><div class="list-prices">٢٢</div></div>
+      <div class="list-item"><div><div class="list-item-name">ثومية</div></div><div class="list-prices">٢٢</div></div>
+      <div class="list-item"><div><div class="list-item-name">طماطم متبلة</div></div><div class="list-prices">٢٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">زبادي</div></div><div class="list-prices">٢٢</div></div>
+      <div class="list-item"><div><div class="list-item-name">كول سلو</div></div><div class="list-prices">٢٢</div></div>
+      <div class="list-item"><div><div class="list-item-name">سلطة خضراء</div></div><div class="list-prices">٢٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">حمص</div></div><div class="list-prices">٢٢</div></div>
+      <div class="list-item"><div><div class="list-item-name">تشكيلة ٥ أصناف</div></div><div class="list-prices">١٠٠</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🍜 الشوربة</h3>
+      <div class="list-item"><div><div class="list-item-name">شوربة لسان عصفور</div></div><div class="list-prices">٢٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">شوربة كريمة بالفراخ</div></div><div class="list-prices">٨٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">شوربة بهاريز</div></div><div class="list-prices">٥٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">شوربة كوارع مخلية</div></div><div class="list-prices">١٥٠</div></div>
+    </div>
+  </div>
+
+  <!-- RICE -->
+  <div class="menu-grid" id="tab-rice">
+    <div class="list-card">
+      <h3>🍚 الأرز</h3>
+      <div class="list-item"><div><div class="list-item-name">أرز أبيض بالشعرية</div></div><div class="list-prices">٣٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">أرز بسمتي</div></div><div class="list-prices">٤٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">أرز بالخلطة</div></div><div class="list-prices">٤٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">أرز صبري أفندي</div><div class="list-item-sub">أرز بسمتي بالأحمر والخلطة</div></div><div class="list-prices">٥٠</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🍝 المكرونات</h3>
+      <div class="list-item"><div><div class="list-item-name">مكرونة نابولي</div></div><div class="list-prices">٥٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مكرونة بلونيز</div></div><div class="list-prices">٦٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مكرونة فرن</div></div><div class="list-prices">٧٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">نجرسكو</div></div><div class="list-prices">٩٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مكرونة بالكبدة</div></div><div class="list-prices">١٢٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مكرونة بالسجق</div></div><div class="list-prices">١١٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مكرونة بالفراخ المشوية</div></div><div class="list-prices">٩٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">مكرونة كرسبي</div></div><div class="list-prices">٩٠</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🍳 وجبات أطفال</h3>
+      <div class="list-item"><div><div class="list-item-name">وجبة استريس</div><div class="list-item-sub">٤ قطع استريس مع مكرونة أو أرز</div></div><div class="list-prices">١١٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">وجبة بانية</div><div class="list-item-sub">٢ قطع بانية مع مكرونة أو أرز</div></div><div class="list-prices">١١٥</div></div>
+    </div>
+  </div>
+
+  <!-- DRINKS -->
+  <div class="menu-grid" id="tab-drinks">
+    <div class="list-card">
+      <h3>🥤 المشروبات</h3>
+      <div class="list-item"><div><div class="list-item-name">مياه معدنية</div></div><div class="list-prices">١٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">شاي</div></div><div class="list-prices">١٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">قهوة</div></div><div class="list-prices">٢٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">مشروب غازي متنوع</div></div><div class="list-prices">٢٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">عصير ليمون</div></div><div class="list-prices">٢٥</div></div>
+      <div class="list-item"><div><div class="list-item-name">عصير ليمون بالنعناع</div></div><div class="list-prices">٣٠</div></div>
+    </div>
+    <div class="list-card">
+      <h3>🍮 الحلو</h3>
+      <div class="list-item"><div><div class="list-item-name">مهلبية</div></div><div class="list-prices">٢٠</div></div>
+      <div class="list-item"><div><div class="list-item-name">أم علي</div></div><div class="list-prices">٤٥</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY BAND -->
+<section id="story">
+  <h2>الطعم أصله بلدي</h2>
+  <p>في صبري أفندي بنؤمن إن الطعم الحقيقي بيجي من اللحمة الطازجة والفحم الطبيعي والأيادي الأمينة. من قلب المنصورة بنقدملك كل يوم أكل زي ما البيت بيعمله – من مشويات وكباب وكفتة لحمام محشي وطواجن وكل الأكل الشرقي الأصيل.</p>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="sec-head reveal">
+    <h2>ليه صبري أفندي؟</h2>
+    <p>جودة ثابتة – خامات طازجة – طعم بيفرق</p>
+  </div>
+  <div class="shimmer"></div>
+  <div class="feat-grid">
+    <div class="feat-card reveal"><div class="feat-icon">🔥</div><h3>فحم طبيعي ١٠٠٪</h3><p>المشويات بتتعمل على فحم طبيعي حقيقي يديها النكهة الأصيلة</p></div>
+    <div class="feat-card reveal"><div class="feat-icon">🥩</div><h3>لحم بلدي طازج</h3><p>بنشتري اللحم طازج كل يوم – لا جمد لا حافظات</p></div>
+    <div class="feat-card reveal"><div class="feat-icon">🍗</div><h3>فراخ على الفحم</h3><p>فراخ طازجة متبلة ومشوية على الفحم بالطريقة الأصيلة</p></div>
+    <div class="feat-card reveal"><div class="feat-icon">🫕</div><h3>أكل شرقي أصيل</h3><p>حمام محشي وممبار وطواجن ومحاشي زي البيت بالظبط</p></div>
+    <div class="feat-card reveal"><div class="feat-icon">🛵</div><h3>توصيل في المنصورة</h3><p>بنوصللك على العنوان في أسرع وقت ممكن</p></div>
+    <div class="feat-card reveal"><div class="feat-icon">🌙</div><h3>مفتوح حتى ٣ صبح</h3><p>في رمضان وطول السنة – بنستقبل طلباتك طول الليل</p></div>
+  </div>
+</section>
+
+<!-- ORDER -->
+<section id="order">
+  <div class="sec-head reveal">
+    <h2>🛒 اطلب دلوقتي</h2>
+    <p>على واتساب أو اتصل بينا مباشرة</p>
+  </div>
+  <div class="shimmer"></div>
+  <div class="order-wrap reveal">
+    <h3>📋 ابعت طلبك</h3>
+    <div class="form-row">
+      <div class="fg"><label>الاسم</label><input type="text" placeholder="اسمك"></div>
+      <div class="fg"><label>الموبايل</label><input type="tel" placeholder="01X XXXX XXXX" dir="ltr"></div>
+    </div>
+    <div class="fg"><label>العنوان</label><input type="text" placeholder="اسم الشارع والرقم – المنصورة"></div>
+    <div class="fg"><label>تفاصيل الطلب</label><textarea placeholder="مثال: ميكس صبري أفندي + ٢ شوربة كريمة + أرز بسمتي..."></textarea></div>
+    <div class="form-row">
+      <div class="fg"><label>الدفع</label>
+        <select><option>كاش عند الاستلام</option><option>فودافون كاش</option><option>انستا باي</option></select>
+      </div>
+      <div class="fg"><label>وقت الطلب</label>
+        <select><option>أسرع ما يمكن</option><option>بعد ٣٠ دقيقة</option><option>بعد ساعة</option></select>
+      </div>
+    </div>
+    <div class="order-btns">
+      <button class="btn-wa" onclick="doWA()">💬 اطلب على واتساب</button>
+      <button class="btn-call" onclick="window.location='tel:01550887929'">📞 اتصل الآن</button>
+    </div>
+    <p style="text-align:center;margin-top:14px;font-size:.8rem;color:#aaa">أو اتصل: <strong>01550887929</strong> · <strong>0502341133</strong> · <strong>01555543602</strong></p>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div id="info">
+  <div class="info-i"><div class="ic">📍</div><h4>العنوان</h4><p>حي الجامعة بجوار مسجد الصباحي<br>المنصورة، الدقهلية</p></div>
+  <div class="info-i"><div class="ic">📞</div><h4>التليفون</h4><p>01550887929<br>0502341133<br>01555543602</p></div>
+  <div class="info-i"><div class="ic">🕐</div><h4>ساعات العمل</h4><p>مفتوح يومياً<br>حتى الساعة ٣ صباحاً</p></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <img class="footer-logo-img" src="sabry-afandi.jpeg" alt="صبري أفندي">
+  <div class="footer-name">صبري أفندي</div>
+  <div class="footer-tag">Sabry Afandi – الطعم أصله بلدي · المنصورة</div>
+  <div class="footer-socials">
+    <a href="#" class="soc">f</a>
+    <a href="#" class="soc">📸</a>
+    <a href="#" class="soc">♪</a>
+  </div>
+  <div class="footer-div"></div>
+  <div class="footer-bot">© ٢٠٢٥ مطعم صبري أفندي – جميع الحقوق محفوظة · المنصورة، الدقهلية</div>
+</footer>
+
+<script>
+// PARTICLES
+(function(){
+  const c=document.getElementById('sparks'),ctx=c.getContext('2d');
+  let W,H,pts=[];
+  const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight};
+  resize();addEventListener('resize',resize);
+  for(let i=0;i<50;i++) pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.4,dx:(Math.random()-.5)*.35,dy:-(Math.random()*.5+.15),a:Math.random()*.5+.15,l:Math.random()});
+  const draw=()=>{
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.dx;p.y+=p.dy;p.l+=.0025;
+      if(p.l>1){p.l=0;p.x=Math.random()*W;p.y=H+5}
+      ctx.save();ctx.globalAlpha=p.a*(1-p.l);
+      ctx.fillStyle='#C89A3A';ctx.shadowBlur=7;ctx.shadowColor='#C89A3A';
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  };draw();
+})();
+
+// TABS
+function showTab(name,el){
+  document.querySelectorAll('.menu-grid').forEach(g=>g.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  el.classList.add('active');
+}
+
+// REVEAL
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// WHATSAPP
+function doWA(){
+  const n=document.querySelector('input[placeholder="اسمك"]').value||'عميل';
+  const p=document.querySelector('input[type="tel"]').value||'';
+  const a=document.querySelector('input[placeholder="اسم الشارع والرقم – المنصورة"]').value||'';
+  const o=document.querySelector('textarea').value||'';
+  window.open('https://wa.me/201550887929?text='+encodeURIComponent(`صبري أفندي👋\nالاسم: ${n}\nالموبايل: ${p}\nالعنوان: ${a}\nالطلب: ${o}`));
+}
+
+// PARALLAX
+addEventListener('scroll',()=>{
+  const y=scrollY;
+  const bg=document.querySelector('.hero-food-img');
+  if(bg)bg.style.transform=`translateY(${y*.28}px)`;
+});
+</script>
+</body>
+</html>

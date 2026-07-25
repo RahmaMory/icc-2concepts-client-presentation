@@ -56,4 +56,10 @@ export const showcaseBrands: ShowcaseBrand[] = [
     category: "Digital Solutions",
     mark: "ICC",
   },
+  {
+  id: "kasr-elsalam",
+  name: "Kasr Elsalam",
+  category: "Restaurant Experience",
+  mark: "KS",
+},
 ];
