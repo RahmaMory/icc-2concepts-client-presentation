@@ -22,7 +22,7 @@ accentRgb: "37, 131, 255",
     description:
       "Review the project scope, included features, investment, delivery time, and commercial terms.",
     // Paste a Gamma embed URL or use a local file such as /proposal.pdf
-    url: "https://gamma.app/",
+url: "https://gamma.app/embed/Tiba-Syrian-Restaurant-bk9r0fpqvypmah8",
     price: "20,000 EGP",
     delivery: "3 weeks",
     scope: ["Responsive website", "Menu presentation", "Direct contact actions"],
