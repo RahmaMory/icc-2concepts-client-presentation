@@ -22,7 +22,7 @@ export default function HomePage() {
       </section>
 
       <section className="experience-grid" aria-label="Client experience options">
-        <ExperienceCard
+        {/* <ExperienceCard
           index="01"
           icon={FileText}
           meta="Project scope & commercial terms"
@@ -33,8 +33,22 @@ export default function HomePage() {
           <div className="scope-chips">
             {client.proposal.scope.map((item) => <span key={item}>{item}</span>)}
           </div>
-        </ExperienceCard>
-
+        </ExperienceCard> */}
+<ExperienceCard
+  index="01"
+  icon={FileText}
+  meta="Project scope & commercial terms"
+  title={client.proposal.title}
+  description={client.proposal.description}
+  to={client.proposal.url}
+  external
+>
+  <div className="scope-chips">
+    {client.proposal.scope.map((item) => (
+      <span key={item}>{item}</span>
+    ))}
+  </div>
+</ExperienceCard>
         <ExperienceCard
           index="02"
           icon={Globe2}
